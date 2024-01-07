@@ -88,6 +88,12 @@ class SurveyController extends Controller
             return abort(code: 403, message: 'Unauthorized action.');
         }
         $survey->delete();
+
+        if ($survey->image) {
+            $absolutePath = public_path($survey->image);
+            File::delete($absolutePath);
+        }
+
         return response(content: '', status: 204);
     }
 
