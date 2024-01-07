@@ -11,12 +11,12 @@ class Survey extends Model
 {
     use HasFactory, HasSlug;
 
-    protected $fillable = ['user_id', 'title', 'slug', 'status', 'description', 'expire_date'];
+    protected $fillable = ['user_id', 'image', 'title', 'slug', 'status', 'description', 'expire_date'];
 
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugFrom('title')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
 }
